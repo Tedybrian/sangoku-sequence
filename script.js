@@ -81,20 +81,22 @@ function searchCards() {
   let jumpMessages = [];
 
   JUMP_POINTS[currentSet][currentSlot].forEach(jump => {
+  const trigger = jump.trigger || [jump.from];
+  const jumpTo = jump.jumpTo || [jump.to];
 
-    if (inputs.includes(jump.from)) {
+  const isTriggered = trigger.every(card => inputs.includes(card));
 
-      const typeText =
-        jump.type === "fixed"
-          ? "固定跳序"
-          : "可能跳序";
+  if (isTriggered) {
+    const typeText =
+      jump.type === "fixed"
+        ? "固定跳序"
+        : "可能跳序";
 
-      jumpMessages.push(
-        `${typeText}：${jump.from} 之後可能跳到 ${jump.to}`
-      );
-    }
-
-  });
+    jumpMessages.push(
+      `${typeText}：${trigger.join(" → ")} 之後可能跳到 ${jumpTo.join(" → ")}`
+    );
+  }
+});
 
   jumpMessages = [...new Set(jumpMessages)];
 
