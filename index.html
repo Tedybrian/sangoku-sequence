@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <title>三國幻戰卡序工具</title>
+</head>
+
+<body>
+
+  <h1>三國幻戰卡序工具</h1>
+
+  <h2>選擇槽位</h2>
+
+  <button onclick="switchSlot('A')">A槽</button>
+  <button onclick="switchSlot('B')">B槽</button>
+
+  <h2>輸入卡片</h2>
+
+  <input
+    id="card1"
+    list="cardList"
+    type="text"
+    placeholder="第1張卡"
+    onfocus="clearCardList()"
+    oninput="updateCardList(this.value); searchCards()"
+  >
+
+  <br><br>
+
+  <input
+    id="card2"
+    list="cardList"
+    type="text"
+    placeholder="第2張卡"
+    onfocus="clearCardList()"
+    oninput="updateCardList(this.value); searchCards()"
+  >
+
+  <br><br>
+
+  <input
+    id="card3"
+    list="cardList"
+    type="text"
+    placeholder="第3張卡"
+    onfocus="clearCardList()"
+    oninput="updateCardList(this.value); searchCards()"
+  >
+
+  <h2>目標卡</h2>
+
+  <input
+    id="targetCard"
+    list="cardList"
+    type="text"
+    placeholder="想追的卡"
+    onfocus="clearCardList()"
+    oninput="updateCardList(this.value); searchCards()"
+  >
+
+  <datalist id="cardList"></datalist>
+
+  <h2>查詢結果</h2>
+
+  <div id="result">
+    目前尚未查詢
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
