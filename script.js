@@ -21,7 +21,13 @@ function searchCards() {
   const sequences =
     CARD_DATA[currentSet][currentSlot];
 
-  const results = sequences.filter(seq => {
+    if (inputs.length === 0) {
+
+    document.getElementById("result").innerHTML = "";
+
+    return;
+    }
+    const results = sequences.filter(seq => {
 
     for (let i = 0; i <= seq.length - inputs.length; i++) {
 
@@ -148,8 +154,10 @@ function searchCards() {
               seq.slice(startIndex, startIndex + 20);
 
             return `
-              <p>${preview.join(" → ")}</p>
-            `;
+  <p style="line-height: 1.8;">
+    ${preview.join("<br>⬇<br>")}
+  </p>
+`;
 
           }).join("")
         : `<p>沒有符合的卡序</p>`
@@ -216,3 +224,12 @@ function clearCardList() {
 }
 
 searchCards();
+function clearInputs() {
+  document.getElementById("card1").value = "";
+  document.getElementById("card2").value = "";
+  document.getElementById("card3").value = "";
+  document.getElementById("targetCard").value = "";
+
+  clearCardList();
+  searchCards();
+}

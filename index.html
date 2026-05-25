@@ -4,67 +4,120 @@
 <head>
   <meta charset="UTF-8">
   <title>三國幻戰卡序工具</title>
+  <style>
+  body {
+  margin: 0;
+  background-color: #1e1e1e;
+  color: #f1f1f1;
+  font-family: Arial, "Microsoft JhengHei", sans-serif;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #ffd966;
+}
+
+h2 {
+  margin-top: 24px;
+  color: #ffffff;
+}
+
+input {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: #2b2b2b;
+  color: white;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #aaa;
+}
+
+button {
+  padding: 10px 16px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3f6cff;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3158d4;
+}
+
+#result {
+  background-color: #2b2b2b;
+  border: 1px solid #444;
+  border-radius: 10px;
+  padding: 15px;
+  line-height: 1.8;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #555;
+}
+</style>
 </head>
 
 <body>
 
-  <h1>三國幻戰卡序工具</h1>
+  <div class="container">
 
-  <h2>選擇槽位</h2>
+    <h1>三國幻戰卡序工具</h1>
 
-  <button onclick="switchSlot('A')">A槽</button>
-  <button onclick="switchSlot('B')">B槽</button>
+    <h2>選擇槽位</h2>
 
-  <h2>輸入卡片</h2>
+    <button onclick="switchSlot('A')">A槽</button>
+    <button onclick="switchSlot('B')">B槽</button>
 
-  <input
-    id="card1"
-    list="cardList"
-    type="text"
-    placeholder="第1張卡"
-    onfocus="clearCardList()"
-    oninput="updateCardList(this.value); searchCards()"
-  >
+    <h2>輸入卡片</h2>
 
-  <br><br>
+    <button onclick="clearInputs()">一鍵清除</button>
 
-  <input
-    id="card2"
-    list="cardList"
-    type="text"
-    placeholder="第2張卡"
-    onfocus="clearCardList()"
-    oninput="updateCardList(this.value); searchCards()"
-  >
+    <br><br>
 
-  <br><br>
+    <input id="card1" list="cardList" type="text" placeholder="第1張卡"
+      onfocus="clearCardList()"
+      oninput="updateCardList(this.value); searchCards()">
 
-  <input
-    id="card3"
-    list="cardList"
-    type="text"
-    placeholder="第3張卡"
-    onfocus="clearCardList()"
-    oninput="updateCardList(this.value); searchCards()"
-  >
+    <br><br>
 
-  <h2>目標卡</h2>
+    <input id="card2" list="cardList" type="text" placeholder="第2張卡"
+      onfocus="clearCardList()"
+      oninput="updateCardList(this.value); searchCards()">
 
-  <input
-    id="targetCard"
-    list="cardList"
-    type="text"
-    placeholder="想追的卡"
-    onfocus="clearCardList()"
-    oninput="updateCardList(this.value); searchCards()"
-  >
+    <br><br>
 
-  <datalist id="cardList"></datalist>
+    <input id="card3" list="cardList" type="text" placeholder="第3張卡"
+      onfocus="clearCardList()"
+      oninput="updateCardList(this.value); searchCards()">
 
-  <h2>查詢結果</h2>
+    <h2>目標卡</h2>
 
-  <div id="result">
-    目前尚未查詢
+    <input id="targetCard" list="cardList" type="text" placeholder="想追的卡"
+      onfocus="clearCardList()"
+      oninput="updateCardList(this.value); searchCards()">
+
+    <datalist id="cardList"></datalist>
+
+    <h2>查詢結果</h2>
+
+    <div id="result"></div>
+
   </div>
 
   <script src="data.js"></script>
